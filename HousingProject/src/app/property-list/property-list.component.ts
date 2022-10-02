@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProperty } from '../property/IProperty.interface';
+import { IProperty } from '../model/iproperty';
+import { IPropertyBase } from '../model/ipropertybase';
 import { HousingService } from '../services/housing.service';
 
 @Component({
@@ -11,28 +12,32 @@ import { HousingService } from '../services/housing.service';
 })
 export class PropertyListComponent implements OnInit {
   SellRent = 1;
-  properties: Array<IProperty>;
+  properties: IPropertyBase[];
 
-
-  constructor(private route: ActivatedRoute, private housingService: HousingService) { this.properties = [] }
+  constructor(private route: ActivatedRoute, private housingService: HousingService) { }
 
   ngOnInit(): void {
     if (this.route.snapshot.url.toString()) {
-      this.SellRent = 2; // we are on property url
+      this.SellRent = 2; // Means we are on rent-property URL else we are on base URL
     }
     this.housingService.getAllProperties(this.SellRent).subscribe(
       data => {
         this.properties = data;
+        const newProperty = JSON.parse(localStorage.getItem('newProp'));
+
+        if (newProperty.SellRent === this.SellRent) {
+          this.properties = [newProperty, ...this.properties];
+        }
+
         console.log(data);
-        
-        },
-      error => {
+      }, error => {
         console.log('httperror:');
         console.log(error);
       }
-    )
+    );
   }
-} 
+
+}
     //  this.http.get('data/properties.json').subscribe(     
   //    data => {
   //      this.properties = data;

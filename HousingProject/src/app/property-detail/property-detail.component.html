@@ -1,11 +1,59 @@
-<p>
-  property-detail works!
-  Selected property id is {{propertyId}}
-  <br /><br />
-  <button (click)="onSelectNext()" class="btn btn-primary">Select Next Page</button>
+<div class="row">
+  <div class="col-4 p-0">
+    <div class="card">
+      <div class="card-img-wrapper">
+        <img class="card-img-top" src="../../assets/images/prop-1.jpg" />
+      </div>
+      <div class="card-body">
+        <h1 class="card-title">Pearl Green</h1>
+        <div>
 
-  <button routerLink="/property-datail/1" class="btn btn-primary">1</button>
-  <button routerLink="/property-datail/2" class="btn btn-primary">2</button>
-  <button routerLink="/property-datail/3" class="btn btn-primary">3</button>
-  <button [routerLink]="['/property-datail/4']" class="btn btn-primary">4</button>
-</p>
+          <strong>2 BHK Apartment @ $12000</strong>
+        </div>
+
+        <div>
+          <strong>In New York</strong>
+        </div>
+
+        <div>
+          <strong>Build Area:</strong>
+          100Sqft
+        </div>
+
+        <div>
+          <strong>Carpet Area:</strong>
+          100Sqft
+        </div>
+        <div>
+          <strong>Furnishy Type:</strong>
+          Fully
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-8 p-0">
+    <div class="tab-panel">
+      <tabset class="member-tabset">
+        <tab heading="Overview">
+
+        </tab>
+        <tab heading="Address">
+
+        </tab>
+        <tab heading="Photos">
+
+        </tab>
+        <tab heading="Contact">
+
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
